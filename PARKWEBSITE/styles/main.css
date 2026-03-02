@@ -212,6 +212,8 @@ footer{
     flex-direction: column;
     align-items: center;
   }
+
+  
 }
 
 /*
@@ -256,4 +258,19 @@ to   { opacity: 1; }
 @-o-keyframes fadein {
 from { opacity: 0; }
 to   { opacity: 1; }
+}
+
+.product-block {
+  display: flex;
+}
+.product-info {
+  display: inline;
+}
+.line p{
+  display: inline;
+}
+@media (max-width: 1024px) {
+ .product-block {
+    display: block;
+  }
 }
