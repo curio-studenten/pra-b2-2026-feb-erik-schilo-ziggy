@@ -274,3 +274,14 @@ to   { opacity: 1; }
     display: block;
   }
 }
+
+table {
+  border-bottom: 2px solid white;
+}
+.top-row {
+  border-bottom: solid 1px black;
+}
+.buttom-row {
+  border-top: solid 1px black;
+  font-weight: bold;
+}
