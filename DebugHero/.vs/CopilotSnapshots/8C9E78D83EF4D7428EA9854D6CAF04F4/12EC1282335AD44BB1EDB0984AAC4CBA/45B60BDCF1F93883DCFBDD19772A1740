@@ -1,0 +1,50 @@
+﻿<Window x:Class="DeveloperLand.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeveloperLand"
+        mc:Ignorable="d"
+        Title="Debug Hero" Height="540" Width="900" Background="#FFF9FAFB">
+    <Grid>
+        <Border Background="#FFEB3B" CornerRadius="16" Margin="30,20,30,0" Height="110" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Image Source="https://img.icons8.com/color/96/000000/superhero.png" Height="80" Margin="20,0,20,0"/>
+                <TextBlock Text="Debug Hero" FontSize="44" FontWeight="Bold" Foreground="#1976D2" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+        <Border Background="#FFFFFF" CornerRadius="12" Margin="50,150,50,0" Height="120" VerticalAlignment="Top">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Geschatte wachttijd" FontSize="22" Foreground="#1976D2" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="WachttijdLabel" Text="0 minuten" FontSize="36" FontWeight="Bold" Foreground="#D32F2F" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,300,0,0">
+            <Border x:Name="Kar1Border" Background="#E3F2FD" CornerRadius="10" Padding="16" Margin="10" Width="180">
+                <StackPanel>
+                    <Image Source="https://img.icons8.com/color/48/000000/train-car.png" Height="40" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Kar 1" FontSize="20" FontWeight="Bold" Foreground="#1976D2" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="Kar1StatusLabel" Text="Actief" FontSize="16" Foreground="#D32F2F" HorizontalAlignment="Center"/>
+                    <Button x:Name="Kar1StatusBtn" Content="Zet in onderhoud" Click="Kar1StatusBtn_Click" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Kar2Border" Background="#E3F2FD" CornerRadius="10" Padding="16" Margin="10" Width="180">
+                <StackPanel>
+                    <Image Source="https://img.icons8.com/color/48/000000/train-car.png" Height="40" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Kar 2" FontSize="20" FontWeight="Bold" Foreground="#1976D2" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="Kar2StatusLabel" Text="Actief" FontSize="16" Foreground="#D32F2F" HorizontalAlignment="Center"/>
+                    <Button x:Name="Kar2StatusBtn" Content="Zet in onderhoud" Click="Kar2StatusBtn_Click" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Kar3Border" Background="#E3F2FD" CornerRadius="10" Padding="16" Margin="10" Width="180">
+                <StackPanel>
+                    <Image Source="https://img.icons8.com/color/48/000000/train-car.png" Height="40" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Kar 3" FontSize="20" FontWeight="Bold" Foreground="#1976D2" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="Kar3StatusLabel" Text="Actief" FontSize="16" Foreground="#D32F2F" HorizontalAlignment="Center"/>
+                    <Button x:Name="Kar3StatusBtn" Content="Zet in onderhoud" Click="Kar3StatusBtn_Click" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <Button x:Name="UpdateBtn" Content="Update informatie" FontSize="20" Background="#1976D2" Foreground="White" HorizontalAlignment="Center" Margin="0,440,0,0" Width="250" Height="50" Click="UpdateBtn_Click"/>
+    </Grid>
+</Window>

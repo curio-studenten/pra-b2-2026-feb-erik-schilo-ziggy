@@ -1,0 +1,128 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Xml;
+
+namespace DeveloperLand
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        public int BerekenDebugHeroWachttijd(string sensorXmlPath)
+        {
+            int wachttijd = 0;
+            XmlDocument doc = new XmlDocument();
+            doc.Load(sensorXmlPath);
+            // 12 sensoren: Sensor01 t/m Sensor12
+            for (int i = 1; i <= 12; i++)
+            {
+                string sensorNaam = $"Sensor{(i < 10 ? "0" : "")}{i}";
+                var node = doc.SelectSingleNode($"//{sensorNaam}");
+                if (node != null && node.InnerText.Trim().ToLower() == "true")
+                {
+                    if (i == 1 || i == 2)
+                        wachttijd += 6;
+                    else
+                        wachttijd += 4;
+                }
+            }
+            return wachttijd;
+        }
+
+        public enum KarStatus { Actief, InOnderhoud, NietActief }
+
+        public KarStatus[] DebugHeroKarren = new KarStatus[3] { KarStatus.Actief, KarStatus.Actief, KarStatus.Actief };
+
+        public void ZetKarInOnderhoud(int karIndex)
+        {
+            if (karIndex >= 0 && karIndex < DebugHeroKarren.Length)
+                DebugHeroKarren[karIndex] = KarStatus.InOnderhoud;
+        }
+
+        public void ZetKarActief(int karIndex)
+        {
+            if (karIndex >= 0 && karIndex < DebugHeroKarren.Length)
+                DebugHeroKarren[karIndex] = KarStatus.Actief;
+        }
+
+        private void UpdateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Pad naar sensordata XML (pas aan indien nodig)
+            string sensorXmlPath = "Assets/SensorData/WachtrijSensoren.xml";
+            int wachttijd = BerekenDebugHeroWachttijd(sensorXmlPath);
+            WachttijdLabel.Text = $"{wachttijd} minuten";
+            UpdateKarStatusLabels();
+        }
+
+        // Verbeterde status logica: knoppen wisselen tussen onderhoud en actief, visuele feedback
+        private void Kar1StatusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (DebugHeroKarren[0] == KarStatus.Actief)
+                ZetKarInOnderhoud(0);
+            else
+                ZetKarActief(0);
+            UpdateKarStatusLabels();
+        }
+
+        private void Kar2StatusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (DebugHeroKarren[1] == KarStatus.Actief)
+                ZetKarInOnderhoud(1);
+            else
+                ZetKarActief(1);
+            UpdateKarStatusLabels();
+        }
+
+        private void Kar3StatusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (DebugHeroKarren[2] == KarStatus.Actief)
+                ZetKarInOnderhoud(2);
+            else
+                ZetKarActief(2);
+            UpdateKarStatusLabels();
+        }
+
+        private void UpdateKarStatusLabels()
+        {
+            UpdateKarStatus(0, Kar1StatusLabel, Kar1StatusBtn, Kar1Border);
+            UpdateKarStatus(1, Kar2StatusLabel, Kar2StatusBtn, Kar2Border);
+            UpdateKarStatus(2, Kar3StatusLabel, Kar3StatusBtn, Kar3Border);
+        }
+
+        private void UpdateKarStatus(int index, TextBlock statusLabel, Button statusBtn, Border karBorder)
+        {
+            switch (DebugHeroKarren[index])
+            {
+                case KarStatus.Actief:
+                    statusLabel.Text = "Actief";
+                    statusBtn.Content = "Zet in onderhoud";
+                    karBorder.Background = new SolidColorBrush(Color.FromRgb(227, 242, 253)); // lichtblauw
+                    break;
+                case KarStatus.InOnderhoud:
+                    statusLabel.Text = "In onderhoud";
+                    statusBtn.Content = "Zet actief";
+                    karBorder.Background = new SolidColorBrush(Color.FromRgb(255, 235, 59)); // geel
+                    break;
+                case KarStatus.NietActief:
+                    statusLabel.Text = "Niet actief";
+                    statusBtn.Content = "Zet actief";
+                    karBorder.Background = new SolidColorBrush(Color.FromRgb(224, 224, 224)); // grijs
+                    break;
+            }
+        }
+    }
+}

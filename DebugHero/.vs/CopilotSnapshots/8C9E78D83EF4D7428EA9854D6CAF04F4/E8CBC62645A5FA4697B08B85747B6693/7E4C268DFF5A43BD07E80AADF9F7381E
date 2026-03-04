@@ -1,0 +1,62 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Xml;
+
+namespace DeveloperLand
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        public int BerekenDebugHeroWachttijd(string sensorXmlPath)
+        {
+            int wachttijd = 0;
+            XmlDocument doc = new XmlDocument();
+            doc.Load(sensorXmlPath);
+            // 12 sensoren: Sensor01 t/m Sensor12
+            for (int i = 1; i <= 12; i++)
+            {
+                string sensorNaam = $"Sensor{(i < 10 ? "0" : "")}{i}";
+                var node = doc.SelectSingleNode($"//{sensorNaam}");
+                if (node != null && node.InnerText.Trim().ToLower() == "true")
+                {
+                    if (i == 1 || i == 2)
+                        wachttijd += 6;
+                    else
+                        wachttijd += 4;
+                }
+            }
+            return wachttijd;
+        }
+
+        public enum KarStatus { Actief, InOnderhoud, NietActief }
+
+        public KarStatus[] DebugHeroKarren = new KarStatus[3] { KarStatus.Actief, KarStatus.Actief, KarStatus.Actief };
+
+        public void ZetKarInOnderhoud(int karIndex)
+        {
+            if (karIndex >= 0 && karIndex < DebugHeroKarren.Length)
+                DebugHeroKarren[karIndex] = KarStatus.InOnderhoud;
+        }
+
+        public void ZetKarActief(int karIndex)
+        {
+            if (karIndex >= 0 && karIndex < DebugHeroKarren.Length)
+                DebugHeroKarren[karIndex] = KarStatus.Actief;
+        }
+    }
+}
