@@ -12,6 +12,270 @@
 body, html{
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #FCFCFC;
+}
+
+.wrapper{
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* HEADER */
+
+header{
+  background: url('../images/park01.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #CCCCCC;
+}
+
+.header-content{
+  padding: 1em;
+  text-align: center;
+  background-color: rgba(255,255,255,0.5);
+
+  animation: fadein 4s;
+}
+
+.logo{
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* TITLES */
+
+h1{
+  margin: 0;
+  font-family: 'Heartbeat';
+  color: #27AE60;
+  text-shadow: 
+    3px 3px 0 #FCFCFC,
+    -1px -1px 0 #FCFCFC,
+    1px -1px 0 #FCFCFC,
+    -1px 1px 0 #FCFCFC,
+    1px 1px 0 #FCFCFC;
+}
+
+h2{
+  border-left: 5px solid #27AE60;
+  padding-left: 10px;
+}
+
+/* MAIN */
+
+main{
+  padding: 1em;
+}
+
+/* FLEX ROW */
+
+.row{
+  display: flex;
+  gap: 1em;
+}
+
+/* TABLE */
+
+table{
+  margin-top: 1em;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th{
+  text-align: start;
+}
+
+table thead,
+table tbody{
+  border-bottom: 1px solid #303030;
+}
+
+table th.slim{
+  width: 100px;
+}
+
+table tfoot{
+  font-weight: bold;
+}
+
+/* ARTICLES */
+
+article{
+  flex: 1;
+  border-left: 5px solid #27AE60;
+  padding-left: 10px;
+  margin: 1em 1em 1em 0;
+}
+
+article:last-of-type{
+  margin-right: 0;
+}
+
+article h2{
+  margin: 0;
+  padding: 1.5em;
+  border-left: none;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+
+  text-shadow: 
+    0 0 0 #FCFCFC,
+    -1px -1px 0 #FCFCFC,
+    1px -1px 0 #FCFCFC,
+    -1px 1px 0 #FCFCFC,
+    1px 1px 0 #FCFCFC;
+}
+
+article h2.fun-for-family{
+  background-image: url('../images/family-fun-george-arthur-pflueger.jpg');
+}
+
+article h2.accessibility{
+  background-image: url('../images/accessible-eunice-stahl.jpg');
+}
+
+article h2.rides{
+  background-image: url('../images/drone-drew-dau.jpg');
+}
+
+article h2.open-forever{
+  background-image: url('../images/open-james-lee.jpg');
+}
+
+/* PRODUCTS */
+
+.product{
+  flex: 1;
+  margin-right: 1em;
+  padding: 1em;
+  background: #CCCCCC;
+  text-align: center;
+}
+
+.product:last-of-type{
+  margin-right: 0;
+}
+
+.product span{
+  display: block;
+}
+
+.product img{
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+/* BUTTON */
+
+button{
+  width: 100%;
+  margin-top: 1em;
+  padding: .5em;
+  background: #27AE60;
+  border: 2px solid #FCFCFC;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* OTHER */
+
+.payment-option{
+  height: 64px;
+}
+
+.side-by-side{
+  display: flex;
+}
+
+.description{
+  flex: 1;
+}
+
+/* FOOTER */
+
+footer{
+  padding: 1em;
+  background: #303030;
+  color: #fff;
+}
+
+.copyright{
+  text-align: center;
+}
+
+/* VISIBILITY */
+
+.hidden-on-lg{
+  display: none;
+}
+
+.hidden-on-sm{
+  display: block;
+}
+
+/* MOBILE */
+
+@media (max-width: 480px){
+
+}
+
+/* TABLET */
+
+@media (max-width: 1024px){
+
+  .logo{
+    max-width: 256px;
+  }
+
+  .row{
+    flex-direction: column;
+  }
+
+  .side-by-side{
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+
+/* FONT */
+
+@font-face{
+  font-family: 'Heartbeat';
+  src: url('../fonts/heartbeat.eot');
+  src: url('../fonts/heartbeat.woff') format('woff'),
+       url('../fonts/heartbeat.ttf') format('truetype'),
+       url('../fonts/heartbeat.svg') format('svg');
+}
+
+/* ANIMATION */
+
+@keyframes fadein{
+  from {opacity:0;}
+  to {opacity:1;}
+}
+/*
+  Afgesproken kleuren:
+
+    * Lichte achtergrond: #FCFCFC
+    * Medium achtergrond: #CCCCCC
+    * Donkere achtergrond: #303030
+
+    * Primaire kleur: #27AE60
+    * Secundaire kleur: #2F80ED
+*/
+
+body, html{
+  margin: 0;
+  padding: 0;
 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #FCFCFC;
@@ -155,10 +419,8 @@ button{
   height: 64px;
 }
 
-.sidy-by-side{
+.side-by-side{
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 .description{
@@ -189,12 +451,7 @@ footer{
 */
 
 @media (max-width: 480px) {
-  .hidden-on-lg {
-    display: block;
-  }
-  .hidden-on-sm {
-    display: none;
-  }
+
 }
 
 /* 
@@ -215,8 +472,6 @@ footer{
     flex-direction: column;
     align-items: center;
   }
-
-  
 }
 
 /*
@@ -224,11 +479,11 @@ footer{
 */
 @font-face {
   font-family: 'Heartbeat';
-  src:  url('../fonts/heartbeat.eot') format('eot'),
-        url('../fonts/heartbeat.otf') format('otf'),
-        url('../fonts/heartbeat.woff') format('woff'),
-        url('../fonts/heartbeat.svg') format('svg'),
-        url('../fonts/heartbeat.ttf') format('ttf');
+  src:  url('fonts/heartbeat.eot') format('eot'),
+        url('fonts/heartbeat.otf') format('otf'),
+        url('fonts/heartbeat.woff') format('woff'),
+        url('fonts/heartbeat.svg') format('svg'),
+        url('fonts/heartbeat.ttf') format('ttf');
 }
 
 /*
@@ -262,7 +517,6 @@ to   { opacity: 1; }
 from { opacity: 0; }
 to   { opacity: 1; }
 }
-
 .product-block {
   display: flex;
 }
